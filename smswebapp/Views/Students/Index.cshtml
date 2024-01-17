@@ -1,0 +1,32 @@
+@model List<smswebapp.Models.Student>
+
+@{
+    ViewData["Title"] = "Student Management";
+}
+<h2>Student List</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Address</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@student.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@student.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>     
+</table>
+<a asp-action="Create">Create New Student</a>
